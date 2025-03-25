@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         targetRotation = transform.rotation; // Начальный поворот
+      
     }
 
     private void Update()
@@ -41,4 +42,9 @@ public class PlayerController : MonoBehaviour
     {
         targetRotation *= Quaternion.Euler(0, angle, 0); // Добавляем поворот относительно текущего положения
     }
+
+   
+
 }
+
+
