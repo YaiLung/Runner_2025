@@ -1,39 +1,47 @@
 using UnityEngine;
+using Score;
 
-public class CheckpointScript : MonoBehaviour
+namespace SaveCheckpoint
 {
-    [SerializeField] private AudioClip checkpointSound; // Звук чекпоинта
-    [SerializeField] private Animator playerAnimator; // Анимация игрока
 
-    private void OnTriggerEnter(Collider other)
+    /// <summary>
+    /// checkpoint manager
+    /// </summary>
+    public class CheckpointScript : MonoBehaviour
     {
-        if (other.CompareTag("Player")) // Проверяем, игрок ли это
-        {
-            SaveGame(other.transform);
-        }
-    }
+        [SerializeField] private AudioClip _checkpointSound; // Checkpoint sound effect
+        [SerializeField] private Animator _playerAnimator; // Player animator
 
-    private void SaveGame(Transform playerTransform)
-    {
-        // Сохраняем позицию и очки
-        PlayerPrefs.SetFloat("PlayerX", playerTransform.position.x);
-        PlayerPrefs.SetFloat("PlayerY", playerTransform.position.y);
-        PlayerPrefs.SetFloat("PlayerZ", playerTransform.position.z);
-        PlayerPrefs.SetInt("PlayerScore", ScoreManager.Instance.GetScore());
-
-        // Воспроизводим анимацию
-        if (playerAnimator != null)
+        private void OnTriggerEnter(Collider other)
         {
-            playerAnimator.SetTrigger("Checkpoint");
+            if (other.CompareTag("Player")) // Check if the player enters the checkpoint
+            {
+                SaveGame(other.transform);
+            }
         }
 
-        // Проигрываем звук
-        if (checkpointSound != null)
+        private void SaveGame(Transform playerTransform)
         {
-            AudioSource.PlayClipAtPoint(checkpointSound, playerTransform.position);
-        }
+            // Save player position and score
+            PlayerPrefs.SetFloat("PlayerX", playerTransform.position.x);
+            PlayerPrefs.SetFloat("PlayerY", playerTransform.position.y);
+            PlayerPrefs.SetFloat("PlayerZ", playerTransform.position.z);
+            PlayerPrefs.SetInt("PlayerScore", ScoreManager.Instance.GetScore());
 
-        // Выводим сообщение в консоль
-        Debug.Log("Игра Сохранена!");
+            // Play checkpoint animation
+            if (_playerAnimator != null)
+            {
+                _playerAnimator.SetTrigger("Checkpoint");
+            }
+
+            // Play checkpoint sound
+            if (_checkpointSound != null)
+            {
+                AudioSource.PlayClipAtPoint(_checkpointSound, playerTransform.position);
+            }
+
+            // Print message in console
+            Debug.Log("Game Saved!");
+        }
     }
 }

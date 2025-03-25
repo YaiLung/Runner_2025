@@ -1,16 +1,25 @@
 using UnityEngine;
+using Score; 
 
-public class ScoreItem : MonoBehaviour
+namespace Score
 {
-    [SerializeField] private int scoreValue = 10; // Сколько очков добавляется/отнимается
-    [SerializeField] private bool isPositive = true; // true - добавляет, false - отнимает
-
-    private void OnTriggerEnter(Collider other)
+    /// <summary>
+    /// score manager for items for score
+    /// </summary>
+    public class ScoreItem : MonoBehaviour
     {
-        if (other.CompareTag("Player"))
+        [SerializeField] private int _scoreValue = 10; // The amount of points added or subtracted
+        [SerializeField] private bool _isPositive = true; // true - adds points, false - subtracts points
+
+        // When the player collides with the score item
+        private void OnTriggerEnter(Collider other)
         {
-            ScoreManager.Instance.AddScore(isPositive ? scoreValue : -scoreValue);
-            Destroy(gameObject);
+            if (other.CompareTag("Player")) // Check if the object is the player
+            {
+                // Add or subtract points based on _isPositive flag
+                ScoreManager.Instance.AddScore(_isPositive ? _scoreValue : -_scoreValue);
+                Destroy(gameObject); // Destroy the score item after it is collected
+            }
         }
     }
 }

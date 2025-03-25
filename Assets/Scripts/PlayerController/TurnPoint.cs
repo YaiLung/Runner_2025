@@ -1,17 +1,23 @@
 using UnityEngine;
 
-public class TurnPoint : MonoBehaviour
+namespace Player
 {
-    [SerializeField] private float turnAngle = 90f; // Угол поворота
-
-    private void OnTriggerEnter(Collider other)
+    /// <summary>
+    /// turn poin when trigger bc
+    /// </summary>
+    public class TurnPoint : MonoBehaviour
     {
-        if (other.CompareTag("Player")) // Проверяем, что вошел игрок
+        [SerializeField] private float _turnAngle = 90f; // Rotation angle
+
+        private void OnTriggerEnter(Collider other)
         {
-            PlayerController player = other.GetComponent<PlayerController>();
-            if (player != null)
+            if (other.CompareTag("Player")) // Check if the player entered the trigger
             {
-                player.SetTurn(turnAngle);
+                PlayerController player = other.GetComponent<PlayerController>();
+                if (player != null)
+                {
+                    player.SetTurn(_turnAngle); // Apply the turn
+                }
             }
         }
     }

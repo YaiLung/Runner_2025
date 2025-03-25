@@ -1,20 +1,26 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class VictoryTrigger : MonoBehaviour
+namespace Victory
 {
-    [SerializeField] private GameObject victoryUI; // UI победы
-    [SerializeField] private AudioClip victorySound; // Аудио победы
-    [SerializeField] private float soundVolume = 1.0f; // Громкость звука
-
-    private void OnTriggerEnter(Collider other)
+    /// <summary>
+    /// Victory when trigger bc
+    /// </summary>
+    public class VictoryTrigger : MonoBehaviour
     {
-        if (other.CompareTag("Player"))
+        [SerializeField] private GameObject _victoryUI; // UI element for victory screen
+        [SerializeField] private AudioClip _victorySound; // Victory sound clip
+        [SerializeField] private float _soundVolume = 1.0f; // Volume of the victory sound
+
+        private void OnTriggerEnter(Collider other)
         {
-            victoryUI.SetActive(true); // Показать UI
-            AudioSource.PlayClipAtPoint(victorySound, Camera.main.transform.position, soundVolume); // Проиграть звук победы
-            Time.timeScale = 0f; // Остановить время (игру)
-            Debug.Log("🏆 Победа!");
+            if (other.CompareTag("Player"))
+            {
+                _victoryUI.SetActive(true); // Show the victory UI
+                AudioSource.PlayClipAtPoint(_victorySound, Camera.main.transform.position, _soundVolume); // Play the victory sound
+                Time.timeScale = 0f; // Pause the game
+                Debug.Log("win!");
+            }
         }
     }
 }
