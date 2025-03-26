@@ -1,5 +1,9 @@
 using UnityEngine;
 
+
+/// <summary>
+/// camera manager
+/// </summary>
 public class CameraFollow : MonoBehaviour
 {
     [SerializeField] private Transform target;  // Цель (игрок)
