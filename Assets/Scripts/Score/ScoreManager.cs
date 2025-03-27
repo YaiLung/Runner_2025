@@ -5,7 +5,7 @@ using System;
 namespace Score
 {
     /// <summary>
-    /// score manager
+    /// Manages the player's score.
     /// </summary>
     public class ScoreManager : MonoBehaviour
     {
@@ -14,6 +14,7 @@ namespace Score
 
         [SerializeField] private Text _scoreText; // UI text for displaying the score
         [SerializeField] private Slider _scoreSlider; // Progress bar for score
+        [SerializeField] private Text _statusText; // UI text for displaying the player's wealth status
         [SerializeField] private int _maxScore = 100; // Maximum score value
 
         private int _currentScore; // Current score value
@@ -46,6 +47,18 @@ namespace Score
         {
             if (_scoreText) _scoreText.text = $"Score: {_currentScore}"; // Update score text
             if (_scoreSlider) _scoreSlider.value = (float)_currentScore / _maxScore; // Update score slider value
+            UpdateStatusText(); // Update status text
+        }
+
+        // Method to update the player's wealth status based on the score
+        private void UpdateStatusText()
+        {
+            if (_statusText)
+            {
+                if (_currentScore <= 49) _statusText.text = "Бедный";
+                else if (_currentScore <= 99) _statusText.text = "Состоятельный";
+                else _statusText.text = "Миллионер";
+            }
         }
 
         // Method to get the current score
