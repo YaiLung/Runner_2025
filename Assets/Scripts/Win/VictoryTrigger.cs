@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Victory
@@ -8,6 +9,16 @@ namespace Victory
         [SerializeField] private GameObject _victoryUI; // Victory screen
         [SerializeField] private AudioClip _victorySound; // Sound
         [SerializeField] private float _soundVolume = 1.0f; // Volume
+        [SerializeField] private string _nextLevelName = "Level2"; // Имя следующей сцены
+        [SerializeField] private Button _nextLevelButton; // Кнопка перехода на следующий уровень
+
+        private void Start()
+        {
+            if (_nextLevelButton != null)
+            {
+                _nextLevelButton.onClick.AddListener(LoadNextLevel); // Привязываем кнопку к методу
+            }
+        }
 
         public void TriggerVictory()
         {
@@ -24,5 +35,12 @@ namespace Victory
                 TriggerVictory();
             }
         }
+
+        public void LoadNextLevel()
+        {
+            Time.timeScale = 1f; // Возвращаем время в норму
+            SceneManager.LoadScene(_nextLevelName); // Загружаем новую сцену
+        }
     }
 }
+
