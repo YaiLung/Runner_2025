@@ -1601,7 +1601,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1d4a7794caf97ce43836787ee1592a0c, type: 2}
+  - {fileID: 2100000, guid: 912094d0b0594d5429347b908dbc8b10, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3117,7 +3117,6 @@ GameObject:
   m_Component:
   - component: {fileID: 808167562}
   - component: {fileID: 808167565}
-  - component: {fileID: 808167564}
   - component: {fileID: 808167563}
   m_Layer: 0
   m_Name: WinPoint
@@ -3155,22 +3154,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _collisionSound: {fileID: 8300000, guid: 97a21edc53c11e84da176a13f98b2111, type: 3}
   _soundVolume: 1
---- !u!114 &808167564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 808167561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9377dba8d6062354c9179504c9445691, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _requiredScore: 50
-  _door: {fileID: 0}
-  _doorAnimator: {fileID: 0}
-  _doorOpenTrigger: Open
 --- !u!65 &808167565
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3442,7 +3425,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6728dabfc69c04240ba8697c27c7721a, type: 2}
+  - {fileID: 2100000, guid: 912094d0b0594d5429347b908dbc8b10, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4130,6 +4113,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 981328115}
+  - component: {fileID: 981328118}
+  - component: {fileID: 981328117}
+  - component: {fileID: 981328116}
   m_Layer: 0
   m_Name: Door_finish_X1
   m_TagString: Untagged
@@ -4155,6 +4141,55 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &981328116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981328114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9377dba8d6062354c9179504c9445691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _requiredScore: 50
+  _door: {fileID: 981328114}
+  _doorAnimator: {fileID: 981328118}
+  _doorOpenTrigger: Open
+--- !u!65 &981328117
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981328114}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.15, y: -5.13, z: 11.93}
+  m_Center: {x: -2.96, y: 1.08, z: 0.96}
+--- !u!95 &981328118
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981328114}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fadfca437836f5747b5245e04829f9c1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &989380200
 GameObject:
   m_ObjectHideFlags: 0
@@ -5484,7 +5519,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1217803703}
   m_LocalRotation: {x: -0, y: -0.69404924, z: -0, w: 0.71992755}
-  m_LocalPosition: {x: 0.14247131, y: -1.8950046, z: 4.078083}
+  m_LocalPosition: {x: 0.14247131, y: -1.895005, z: 4.078083}
   m_LocalScale: {x: 3.0699177, y: 3.0699182, z: 3.0699177}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9626,7 +9661,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1d4a7794caf97ce43836787ee1592a0c, type: 2}
+  - {fileID: 2100000, guid: 912094d0b0594d5429347b908dbc8b10, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
